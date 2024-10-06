@@ -1,20 +1,19 @@
 'use client'
 
 import { useParams } from 'next/navigation'
-import { useGameProgramAccount } from '@/hooks/useGameProgram'
+import { useGameProgram, useGameProgramAccount } from '@/hooks/useGameProgram'
 import { PublicKey } from '@solana/web3.js'
 import React from 'react'
 import LoadingSpinner from '@/components/ui/LoadingSpinner'
 import ErrorComponent from '@/components/ui/ErrorComponent'
+import { useWallet } from '@solana/wallet-adapter-react'
 
 const GameDetailPage = () => {
 
   const { gameAccount } = useParams()
+  const { startGame } = useGameProgram()
+  const { publicKey } = useWallet()
 
-  // Convert gameId to PublicKey
-  // const gameAccountKey = gameAccount ? new PublicKey(gameAccount as string) : undefined
-
-  // Fetch the game details using the gameId
   const { accountQuery } = useGameProgramAccount({
     account: gameAccount as unknown as PublicKey
   })
@@ -31,6 +30,18 @@ const GameDetailPage = () => {
     )
   }
 
+  const handleStartGame = async () => {
+    if (publicKey) {
+      const res = await startGame.mutateAsync({
+        gameAccount: gameAccount as unknown as PublicKey
+      })
+
+      console.log('result from startgame ', res)
+    }
+  }
+
+
+
   const gameData = accountQuery.data
 
   return (
@@ -46,7 +57,7 @@ const GameDetailPage = () => {
           <p>Apparatus: {gameData.apparatus}</p>
           <p>Joined Players: {gameData.players.length}</p>
 
-          {/* You can add more game details here */}
+          <button onClick={handleStartGame}>Start Game</button>
         </>
       ) : (
         <p>No game data found</p>

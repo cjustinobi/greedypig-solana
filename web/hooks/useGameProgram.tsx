@@ -29,7 +29,7 @@ export function useGameProgram() {
   const { publicKey } = useWallet()
   const { connection } = useConnection();
   const { cluster } = useCluster()
-// const { cluster = defaultClusters[0] } = useCluster()
+
   const transactionToast = useTransactionToast();
   const provider = useAnchorProvider();
   const programId = useMemo(
@@ -111,16 +111,13 @@ export function useGameProgram() {
    const startGame = useMutation<string, Error, IGameAccount>({
      mutationKey: ['greedy-pig', 'start-game', { cluster }],
      mutationFn: async ({ gameAccount }) => {
-       // const bnStakingAmount =
-       //   staking_amount !== undefined ? new BN(staking_amount) : null
+
        return program.methods
          .startGame()
          .accounts({
            gameAccount,
            player: provider.wallet.publicKey
-           // systemProgram: SystemProgram.programId
          })
-
          .rpc()
      },
      onSuccess: signature => {

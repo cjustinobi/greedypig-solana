@@ -9,7 +9,7 @@ export { GreedyPig, GreedyPigIDL };
 
 // After updating your program ID (e.g. after running `anchor keys sync`) update the value below.
 export const GREEDY_PIG_PROGRAM_ID = new PublicKey(
-  "7jK1HcSknoB4KDjmY7z6Yi1aLz4Gu9mhv34ZxFDvfocr"
+  "2MKHvQoStSV7tx6ywCSgGVoe7mhowfaQxnupbbUiNFmm"
 );
 
 // This is a helper function to get the Counter Anchor program.

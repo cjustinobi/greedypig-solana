@@ -11,13 +11,13 @@ module.exports = {
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
-    extend: {
+     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        'gradient-radial2': 'radial-gradient(#5D0976, #300043, #2B0142)',
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         'gradient-custom': 'linear-gradient(to right, #AE62EE, #FE8A7C)',
-        'hero-gradient-custom': ''
 
       },
       colors: {
@@ -46,8 +46,9 @@ module.exports = {
         'WorkSans-Regular': ['WorkSans-Regular'],
         'WorkSans-Medium': ['WorkSans-Medium'],
         'WorkSans-SemiBold': ['WorkSans-SemiBold'],
+        'WorkSans-Bold': ['WorkSans-Bold'],
       },
-    },
+  },
   },
   plugins: [require('daisyui')],
 };

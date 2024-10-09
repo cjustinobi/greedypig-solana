@@ -1,19 +1,19 @@
 'use client';
 
 import { WalletButton } from '../solana/solana-provider';
-import * as React from 'react';
-import { ReactNode, Suspense, useEffect, useRef } from 'react';
-
-import Link from 'next/link';
+import * as React from 'react'
+import { ReactNode, Suspense, useEffect, useRef } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation';
 
 import { AccountChecker } from '../account/account-ui';
 import {
   ClusterChecker,
-  ClusterUiSelect,
   ExplorerLink,
 } from '../cluster/cluster-ui';
 import toast, { Toaster } from 'react-hot-toast';
+import Logo from '@/assets/img/logo.png'
 
 export function UiLayout({
   children,
@@ -29,10 +29,12 @@ export function UiLayout({
       <div className="navbar bg-base-300 text-neutral-content flex-col md:flex-row space-y-2 md:space-y-0">
         <div className="flex-1">
           <Link className="btn btn-ghost normal-case text-xl" href="/">
-            <img
-              className="h-4 md:h-6"
-              alt="Solana Logo"
-              src="/solana-logo.png"
+            <Image
+              className="w-14 h-14"
+              src={Logo}
+              width={56}
+              height={56}
+              alt="logo"
             />
           </Link>
           <ul className="menu menu-horizontal px-1 space-x-2">
@@ -50,7 +52,7 @@ export function UiLayout({
         </div>
         <div className="flex-none space-x-2">
           <WalletButton />
-          <ClusterUiSelect />
+          {/* <ClusterUiSelect /> */}
         </div>
       </div>
       <ClusterChecker>
@@ -68,9 +70,8 @@ export function UiLayout({
         </Suspense>
         <Toaster position="bottom-right" />
       </div>
-    
     </div>
-  );
+  )
 }
 
 export function AppModal({

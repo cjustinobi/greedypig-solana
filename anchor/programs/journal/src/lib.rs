@@ -2,7 +2,7 @@ use anchor_lang::prelude::*;
 
 // This is your program's public key and it will update
 // automatically when you build the project.
-declare_id!("7jK1HcSknoB4KDjmY7z6Yi1aLz4Gu9mhv34ZxFDvfocr");
+declare_id!("2MKHvQoStSV7tx6ywCSgGVoe7mhowfaQxnupbbUiNFmm");
 
 #[program]
 mod greedy_pig {

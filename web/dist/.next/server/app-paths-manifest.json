@@ -1,0 +1,10 @@
+{
+  "/page": "app/page.js",
+  "/account/page": "app/account/page.js",
+  "/create-game/page": "app/create-game/page.js",
+  "/clusters/page": "app/clusters/page.js",
+  "/games/page": "app/games/page.js",
+  "/api/hello/route": "app/api/hello/route.js",
+  "/account/[address]/page": "app/account/[address]/page.js",
+  "/games/[gameAccount]/page": "app/games/[gameAccount]/page.js"
+}

@@ -1,0 +1,10 @@
+{
+  "/page": "/",
+  "/account/page": "/account",
+  "/create-game/page": "/create-game",
+  "/clusters/page": "/clusters",
+  "/games/page": "/games",
+  "/api/hello/route": "/api/hello",
+  "/account/[address]/page": "/account/[address]",
+  "/games/[gameAccount]/page": "/games/[gameAccount]"
+}

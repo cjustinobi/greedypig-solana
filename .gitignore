@@ -34,7 +34,7 @@ testem.log
 Thumbs.db
 .nx/cache
 # Next.js
-.next
+# .next
 out
 .anchor
 anchor/target/*

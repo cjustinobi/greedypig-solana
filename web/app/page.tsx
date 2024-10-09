@@ -1,7 +1,6 @@
 import Hero from '@/components/Hero'
 import TopScorer from '@/components/TopScorer'
 import LatestGames from '@/components/shared/LatestGames'
-// import DashboardProfile from '@/components/DashboardProfile'
 
 const Dashboard = () => {
   return (

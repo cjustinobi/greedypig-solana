@@ -1,0 +1,378 @@
+{
+  "address": "2MKHvQoStSV7tx6ywCSgGVoe7mhowfaQxnupbbUiNFmm",
+  "metadata": {
+    "name": "greedy_pig",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "create_game",
+      "discriminator": [
+        124,
+        69,
+        75,
+        66,
+        184,
+        220,
+        72,
+        206
+      ],
+      "accounts": [
+        {
+          "name": "game_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "arg",
+                "path": "title"
+              },
+              {
+                "kind": "account",
+                "path": "owner"
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "winning_score",
+          "type": "u64"
+        },
+        {
+          "name": "staking_amount",
+          "type": "u64"
+        },
+        {
+          "name": "apparatus",
+          "type": "string"
+        },
+        {
+          "name": "mode",
+          "type": "string"
+        },
+        {
+          "name": "max_players",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "get_games_by_owner",
+      "discriminator": [
+        103,
+        53,
+        187,
+        211,
+        115,
+        228,
+        15,
+        105
+      ],
+      "accounts": [
+        {
+          "name": "owner",
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [],
+      "returns": {
+        "vec": {
+          "defined": {
+            "name": "GameAccountState"
+          }
+        }
+      }
+    },
+    {
+      "name": "join_game",
+      "discriminator": [
+        107,
+        112,
+        18,
+        38,
+        56,
+        173,
+        60,
+        128
+      ],
+      "accounts": [
+        {
+          "name": "game_account",
+          "writable": true
+        },
+        {
+          "name": "player",
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "pass_turn",
+      "discriminator": [
+        224,
+        215,
+        57,
+        43,
+        234,
+        162,
+        75,
+        182
+      ],
+      "accounts": [
+        {
+          "name": "game_account",
+          "writable": true
+        },
+        {
+          "name": "player",
+          "signer": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "play_turn",
+      "discriminator": [
+        116,
+        200,
+        44,
+        67,
+        23,
+        228,
+        209,
+        99
+      ],
+      "accounts": [
+        {
+          "name": "game_account",
+          "writable": true
+        },
+        {
+          "name": "player",
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "roll_result",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "start_game",
+      "discriminator": [
+        249,
+        47,
+        252,
+        172,
+        184,
+        162,
+        245,
+        14
+      ],
+      "accounts": [
+        {
+          "name": "game_account",
+          "writable": true
+        },
+        {
+          "name": "player",
+          "signer": true
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "GameAccountState",
+      "discriminator": [
+        134,
+        141,
+        26,
+        149,
+        244,
+        232,
+        229,
+        119
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "GameFull",
+      "msg": "The game is already full"
+    },
+    {
+      "code": 6001,
+      "name": "PlayerAlreadyJoined",
+      "msg": "Player has already joined this game"
+    },
+    {
+      "code": 6002,
+      "name": "InvalidApparatus",
+      "msg": "Invalid apparatus specified"
+    },
+    {
+      "code": 6003,
+      "name": "InvalidGameMode",
+      "msg": "Invalid game mode specified"
+    },
+    {
+      "code": 6004,
+      "name": "GameAlreadyStarted",
+      "msg": "Game has already started"
+    },
+    {
+      "code": 6005,
+      "name": "NotEnoughPlayers",
+      "msg": "Not enough players to start the game"
+    },
+    {
+      "code": 6006,
+      "name": "GameNotInProgress",
+      "msg": "Game is not in progress"
+    },
+    {
+      "code": 6007,
+      "name": "NotPlayerTurn",
+      "msg": "It's not this player's turn"
+    },
+    {
+      "code": 6008,
+      "name": "PlayerNotFound",
+      "msg": "Player not found in the game"
+    }
+  ],
+  "types": [
+    {
+      "name": "GameAccountState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "winning_score",
+            "type": "u64"
+          },
+          {
+            "name": "staking_amount",
+            "type": "u64"
+          },
+          {
+            "name": "apparatus",
+            "type": "string"
+          },
+          {
+            "name": "mode",
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "players",
+            "type": {
+              "vec": "pubkey"
+            }
+          },
+          {
+            "name": "max_players",
+            "type": "u8"
+          },
+          {
+            "name": "current_player_index",
+            "type": "u8"
+          },
+          {
+            "name": "game_state",
+            "type": {
+              "defined": {
+                "name": "GameState"
+              }
+            }
+          },
+          {
+            "name": "leaderboard",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "PlayerScore"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "GameState",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "WaitingForPlayers"
+          },
+          {
+            "name": "InProgress"
+          },
+          {
+            "name": "Finished"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PlayerScore",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "player",
+            "type": "pubkey"
+          },
+          {
+            "name": "temp_score",
+            "type": "u64"
+          },
+          {
+            "name": "final_score",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ]
+}

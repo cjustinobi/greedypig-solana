@@ -1,6 +1,6 @@
 'use client';
 
-import { getGreedyPiglProgram, getGreedyPigProgramId } from '@journal/anchor';
+import { getGreedyPiglProgram, getGreedyPigProgramId } from '@/lib/idl/greedypigIDL';
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { Cluster, PublicKey, SystemProgram } from '@solana/web3.js';
 import { useMutation, useQuery } from '@tanstack/react-query';

@@ -5,8 +5,8 @@ import { IconTrash } from '@tabler/icons-react';
 import { useQuery } from '@tanstack/react-query';
 import { ReactNode, useState } from 'react';
 import { AppModal } from '../ui/ui-layout';
-import { useCluster, ClusterNetwork } from '@/hooks/useCluster';
-// import { ClusterNetwork, useCluster } from './cluster-data-access';
+// import { useCluster, ClusterNetwork } from '@/hooks/useCluster';
+import { ClusterNetwork, useCluster } from './cluster-data-access';
 import { Connection } from '@solana/web3.js';
 
 export function ExplorerLink({
